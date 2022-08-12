@@ -6,20 +6,17 @@ export default function HomePage() {
   const [trendMovies, setTrendMovies] = useState([]);
 
   useEffect(() => {
-    getTrandingMovies()
-      .then(({ results }) => setTrendMovies(results));
+    getTrandingMovies().then(({ results }) => setTrendMovies(results));
   }, []);
-  
-  console.log(trendMovies)
+
+  // console.log(trendMovies);
   return (
     <>
       <PageHeading text="Top movies" />
-            {trendMovies && (
+      {trendMovies && (
         <ul>
           {trendMovies.map(el => (
-            <li key={el.id}>
-              {el.title}
-            </li>
+            <li key={el.id}>{el.title}</li>
           ))}
         </ul>
       )}

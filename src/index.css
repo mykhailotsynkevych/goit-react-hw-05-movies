@@ -23,7 +23,8 @@ code {
   background-color: #fff;
   border-radius: 3px;
   overflow: hidden;
-  box-shadow: 0 3px 3px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%), 0 3px 3px rgb(0 0 0 / 20%);
+  box-shadow: 0 3px 3px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%),
+    0 3px 3px rgb(0 0 0 / 20%);
 }
 
 .SearchForm-button {
@@ -68,12 +69,11 @@ code {
   outline: none;
   padding-left: 6px;
   padding-right: 4px;
-    border-radius: 2px;
-
-  
+  border-radius: 2px;
 }
 
 .SearchForm-input::placeholder {
   font: inherit;
   font-size: 18px;
 }
+
