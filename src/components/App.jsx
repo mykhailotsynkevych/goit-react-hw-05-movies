@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import MoviesPage from '../pages/MoviesPage';
-import NotFoundPage from '../pages/NotFoundPage';
 import { Container, Header, Link } from './App.styled';
 
 export default function App() {
@@ -16,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        {/* <Route path="*" element={<HomePage />} /> */}
       </Routes>
     </Container>
   );
