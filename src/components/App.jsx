@@ -1,16 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
-import AppBar from './AppBar/AppBar';
-import Container from './Container/Container';
 import HomePage from '../pages/HomePage';
 import MoviesPage from '../pages/MoviesPage';
-// import BooksView from './views/BooksView';
-// import BookDetailsView from './views/BookDetailsView';
 import NotFoundPage from '../pages/NotFoundPage';
+import { Container, Header, Link } from './App.styled';
 
 export default function App() {
   return (
     <Container>
-      <AppBar />
+      <Header>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
+        </nav>
+      </Header>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />

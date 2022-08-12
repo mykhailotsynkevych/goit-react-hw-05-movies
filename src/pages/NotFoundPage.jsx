@@ -1,3 +1,6 @@
+import PageHeading from '../components/PageHeading/PageHeading';
+
 export default function NotFoundPage() {
-  return <h1>404 Страница не найдена</h1>;
+  return <PageHeading text="404 Страница не найдена" />;
 }
+
