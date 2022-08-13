@@ -1,0 +1,7 @@
+.moviePage {
+    display: flex;
+}
+
+.movieDiscription {
+    margin-left: 15px;
+}
