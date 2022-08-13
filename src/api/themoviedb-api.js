@@ -50,3 +50,8 @@ export function getCastFromMovieById(id) {
 export function getReviewsFromMovieById(id) {
   return fetchWithErrorHandling(`${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`);
 }
+
+export function getImageFormMovieById(id) {
+  return fetchWithErrorHandling(`${BASE_URL}/movie/${id}/images?api_key=${API_KEY}&language=en-US`);
+}
+

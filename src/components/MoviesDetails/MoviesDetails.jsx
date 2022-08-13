@@ -6,22 +6,38 @@ import s from './MovieDetails.module.css';
 
 export default function MoviesDetails() {
   const [idMovie, setIdMovie] = useState({});
+  // const [movieYear, setMovieYear] = useState("");
   const { id } = useParams();
  
   useEffect(() => {
     getMovieById(id).then(setIdMovie)
+
+
+    // getImageFormMovieById(id).then(data => console.log(data))
   }, [id]);
     
+
+  // https://www.themoviedb.org/t/p/original/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg
   return <>{idMovie && <>
       <div className={s.moviePage}>
       <img src="https://www.themoviedb.org/t/p/original/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg" alt={idMovie.title} width="250" />
       <div className={s.movieDiscription}>
         <h1>{idMovie.title} </h1>
-        <h5>{idMovie.release_date} </h5>
+        {idMovie.release_date && <h5>{idMovie.release_date.slice(0, 4)} </h5>}
         <h4>Overview</h4>
         <p>{idMovie.overview}</p>
         <h4>Genres</h4>
-        <p>{idMovie.vote_average}</p>
+        {idMovie.genres && (
+        <ul>
+          {idMovie.genres.map(el => (
+            <li key={el.id}>
+              <p>{el.name}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+        <h4>Rating</h4>
+        {idMovie.vote_average && <p> {idMovie.vote_average.toFixed(1)} </p>}
         </div>
     </div>
 
