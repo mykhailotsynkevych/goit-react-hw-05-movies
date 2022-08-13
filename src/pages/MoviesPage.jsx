@@ -1,12 +1,23 @@
 import PageHeading from '../components/PageHeading/PageHeading';
 import { useState, useEffect } from 'react';
 import { getSearchMovies } from '../api/themoviedb-api';
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
+
+// import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [query, setQuery] = useState('');
   const [searchMovie, setSearchMovie] = useState('Мішуня');
   const [searchMovieResult, setSearchMovieResult] = useState([]);
+
+  const location = useLocation();
+
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const productName = searchParams.get("name") ?? "";
+  //   const updateQueryString = (name) => {
+  //   const nextParams = name !== "" ? { name } : {};
+  //   setSearchParams(nextParams);
+  // };
 
   const handleNameChange = event => {
     setQuery(event.target.value);
@@ -53,7 +64,7 @@ export default function MoviesPage() {
         <ul>
           {searchMovieResult.map(el => (
             <li key={el.id}>
-              <Link to={`/movies/${el.id}`}>{el.title}</Link>
+              <Link to={`/movies/${el.id}`} state={{ from: location }}>{el.title}</Link>
             </li>
           ))}
         </ul>

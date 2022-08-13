@@ -1,12 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieById } from '../../api/themoviedb-api';
 import { Link, Outlet } from 'react-router-dom';
 import s from './MovieDetails.module.css';
+import { BackLink } from "../BackLink/BackLink";
 
 export default function MoviesDetails() {
   const [idMovie, setIdMovie] = useState({});
   const { id } = useParams();
+
+    const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/movies";
 
   useEffect(() => {
     getMovieById(id).then(setIdMovie);
@@ -14,6 +18,7 @@ export default function MoviesDetails() {
 
   return (
     <>
+      <BackLink to={backLinkHref}>Back to movies</BackLink>
       {idMovie && (
         <>
           <div className={s.moviePage}>
