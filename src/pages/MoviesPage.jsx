@@ -1,6 +1,7 @@
 import PageHeading from '../components/PageHeading/PageHeading';
 import { useState, useEffect } from 'react';
 import { getSearchMovies } from '../api/themoviedb-api';
+import { Link } from 'react-router-dom';
 
 export default function MoviesPage() {
   const [query, setQuery] = useState('');
@@ -48,12 +49,12 @@ export default function MoviesPage() {
         </button>
       </form>
 
-      
-
       {searchMovie !== 'Мішуня' && (
         <ul>
           {searchMovieResult.map(el => (
-            <li key={el.id}>{el.title}</li>
+            <li key={el.id}>
+              <Link to={`/movies/${el.id}`}>{el.title}</Link>
+            </li>
           ))}
         </ul>
       )}
