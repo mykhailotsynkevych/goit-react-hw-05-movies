@@ -23,7 +23,7 @@ export default function MoviesDetails() {
       <img src="https://www.themoviedb.org/t/p/original/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg" alt={idMovie.title} width="250" />
       <div className={s.movieDiscription}>
         <h1>{idMovie.title} </h1>
-        {idMovie.release_date && <h5>{idMovie.release_date.slice(0, 4)} </h5>}
+        {idMovie.release_date && <h2>Year: {idMovie.release_date.slice(0, 4)} </h2>}
         <h4>Overview</h4>
         <p>{idMovie.overview}</p>
         <h4>Genres</h4>
