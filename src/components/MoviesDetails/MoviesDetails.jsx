@@ -23,7 +23,7 @@ const MoviesDetails = () => {
         <>
           <div className={s.moviePage}>
             <img
-              src="https://www.themoviedb.org/t/p/original/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg"
+              src={`https://image.tmdb.org/t/p/w500${idMovie.poster_path}`}
               alt={idMovie.title}
               width="250"
             />
