@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import { getTrandingMovies } from '../api/themoviedb-api';
 
-export default function HomePage() {
+const HomePage = () => {
   const [trendMovies, setTrendMovies] = useState([]);
+    const location = useLocation();
 
   useEffect(() => {
     getTrandingMovies().then(({ results }) => setTrendMovies(results));
@@ -18,7 +19,7 @@ export default function HomePage() {
         <ul>
           {trendMovies.map(el => (
             <li key={el.id}>
-              <Link to={`/movies/${el.id}`}>{el.title}</Link>
+              <Link to={`/movies/${el.id}`} state={{ from: location }}>{el.title}</Link>
               </li>
           ))}
         </ul>
@@ -26,3 +27,5 @@ export default function HomePage() {
     </>
   );
 }
+
+export default HomePage;

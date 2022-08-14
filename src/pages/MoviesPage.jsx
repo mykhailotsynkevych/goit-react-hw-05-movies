@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useSearchParams } from 'react-router-dom';
 
-export default function MoviesPage() {
+const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [searchMovieResult, setSearchMovieResult] = useState([]);
 
@@ -68,3 +68,6 @@ export default function MoviesPage() {
     </>
   );
 }
+
+
+export default MoviesPage;
