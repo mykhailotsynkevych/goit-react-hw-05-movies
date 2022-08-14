@@ -22,11 +22,12 @@ const MoviesDetails = () => {
       {idMovie && (
         <>
           <div className={s.moviePage}>
-            <img
+            {idMovie.poster_path && <img
               src={`https://image.tmdb.org/t/p/w500${idMovie.poster_path}`}
               alt={idMovie.title}
               width="250"
-            />
+            />}
+            
             <div className={s.movieDiscription}>
               <h1>{idMovie.title} </h1>
               {idMovie.release_date && (
@@ -54,10 +55,10 @@ const MoviesDetails = () => {
           <h4>Additional information</h4>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              <Link to="cast" state={{ from: location }}>Cast</Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={{ from: location }}>Reviews</Link>
             </li>
           </ul>
       <Suspense fallback={<div>Loading subpage...</div>}>

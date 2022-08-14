@@ -1,0 +1,9 @@
+.actorsCards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.actorsCards li {
+    margin: 5px;
+    width: 150px;
+}
