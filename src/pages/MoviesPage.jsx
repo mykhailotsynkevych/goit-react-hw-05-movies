@@ -1,23 +1,18 @@
 import PageHeading from '../components/PageHeading/PageHeading';
 import { useState, useEffect } from 'react';
 import { getSearchMovies } from '../api/themoviedb-api';
-import { Link, useLocation  } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
   const [query, setQuery] = useState('');
-  const [searchMovie, setSearchMovie] = useState('Мішуня');
   const [searchMovieResult, setSearchMovieResult] = useState([]);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movie = searchParams.get('movie');
+  
   const location = useLocation();
-
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const productName = searchParams.get("name") ?? "";
-  //   const updateQueryString = (name) => {
-  //   const nextParams = name !== "" ? { name } : {};
-  //   setSearchParams(nextParams);
-  // };
 
   const handleNameChange = event => {
     setQuery(event.target.value);
@@ -30,16 +25,15 @@ export default function MoviesPage() {
       alert('Введите запрос.');
       return;
     }
-
-    setSearchMovie(query);
+    setSearchParams({ movie: query });
     setQuery('');
   };
 
   useEffect(() => {
-    getSearchMovies(searchMovie).then(({ results }) =>
-      setSearchMovieResult(results)
-    );
-  }, [searchMovie]);
+    if (!movie) return;
+
+    getSearchMovies(movie).then(({ results }) => setSearchMovieResult(results));
+  }, [movie]);
 
   return (
     <>
@@ -60,11 +54,13 @@ export default function MoviesPage() {
         </button>
       </form>
 
-      {searchMovie !== 'Мішуня' && (
+      {movie && (
         <ul>
           {searchMovieResult.map(el => (
             <li key={el.id}>
-              <Link to={`/movies/${el.id}`} state={{ from: location }}>{el.title}</Link>
+              <Link to={`/movies/${el.id}`} state={{ from: location }}>
+                {el.title}
+              </Link>
             </li>
           ))}
         </ul>
