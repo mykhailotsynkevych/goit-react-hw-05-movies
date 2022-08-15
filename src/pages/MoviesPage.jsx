@@ -30,7 +30,7 @@ const MoviesPage = () => {
   useEffect(() => {
     if (!movie) return;
 
-    getSearchMovies(movie).then(({ results }) => setSearchMovieResult(results));
+    getSearchMovies(movie).then(({ results }) => setSearchMovieResult(results)).catch(err => console.log(err));
   }, [movie]);
 
   return (
