@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const MoviesList = ({ searchMovieResult }) => {
   const location = useLocation();
+  
   return (
     <ul>
       {searchMovieResult.map(el => (
