@@ -1,11 +1,11 @@
 import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
-import { getMovieById } from '../../api/themoviedb-api';
+import { getMovieById } from '../api/themoviedb-api';
 import { Link, Outlet } from 'react-router-dom';
-import s from './MovieDetails.module.css';
-import { BackLink } from "../BackLink/BackLink";
+import s from './MovieDetailsPage.module.css';
+import { BackLink } from "../components/BackLink/BackLink";
 
-const MoviesDetails = () => {
+const MoviesDetailsPage = () => {
   const [idMovie, setIdMovie] = useState({});
   const { id } = useParams();
 
@@ -70,4 +70,4 @@ const MoviesDetails = () => {
   );
 }
 
-export default MoviesDetails;
+export default MoviesDetailsPage;
