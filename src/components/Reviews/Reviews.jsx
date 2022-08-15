@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getReviewsFromMovieById } from '../../api/themoviedb-api';
@@ -25,3 +26,12 @@ export default function Reviews() {
     </>
   );
 }
+
+Reviews.propTypes = {
+  Reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};
