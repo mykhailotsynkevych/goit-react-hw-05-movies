@@ -1,7 +1,7 @@
 import PageHeading from '../components/PageHeading/PageHeading';
+import MoviesList from '../components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getSearchMovies } from '../api/themoviedb-api';
-import { Link, useLocation } from 'react-router-dom';
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,8 +11,6 @@ const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const movie = searchParams.get('movie');
-  
-  const location = useLocation();
 
   const handleNameChange = event => {
     setQuery(event.target.value);
@@ -54,20 +52,9 @@ const MoviesPage = () => {
         </button>
       </form>
 
-      {movie && (
-        <ul>
-          {searchMovieResult.map(el => (
-            <li key={el.id}>
-              <Link to={`/movies/${el.id}`} state={{ from: location }}>
-                {el.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {movie && <MoviesList searchMovieResult={searchMovieResult} />}
     </>
   );
-}
-
+};
 
 export default MoviesPage;
