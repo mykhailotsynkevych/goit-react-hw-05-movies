@@ -15,6 +15,7 @@ code {
 }
 
 .SearchForm {
+  align-self: center;
   margin-bottom: 15px;
   height: 35px;
   display: flex;
@@ -29,7 +30,6 @@ code {
 }
 
 .SearchForm-button {
-  padding-bottom: 5px;
   display: inline-block;
   width: 48px;
   height: 48px;
