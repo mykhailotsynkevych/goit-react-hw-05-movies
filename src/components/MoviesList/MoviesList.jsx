@@ -4,7 +4,6 @@ import s from './MoviesList.module.css';
 import { Link, useLocation } from 'react-router-dom';
 
 const MoviesList = ({ searchMovieResult }) => {
-  console.log(searchMovieResult)
   const location = useLocation();
   
   return (
